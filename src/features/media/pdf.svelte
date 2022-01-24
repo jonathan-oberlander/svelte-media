@@ -1,9 +1,9 @@
 <script lang="ts">
-  import { storedFile } from "./stores";
+  import { filePath } from "./stores";
   import PdfViewer from "svelte-pdf";
 </script>
 
-<PdfViewer url={"http://localhost:3000/" + $storedFile.path} />
+<PdfViewer url={$filePath} />
 
 <style>
 </style>

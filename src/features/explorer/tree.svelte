@@ -1,6 +1,6 @@
 <script lang="ts">
   import Directory from "./directory.svelte";
-  import type { Level } from "./stores";
+  import type { Level } from "../../types";
 
   const fetchFiles = (async (): Promise<Level> => {
     const response = await fetch("http://localhost:3000/directories");

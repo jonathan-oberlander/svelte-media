@@ -1,6 +1,6 @@
 <script lang="ts">
   import File from "./file.svelte";
-  import type { Level } from "./stores";
+  import type { Level } from "../../types";
 
   export let expanded = false;
   export let level: Level;
@@ -15,13 +15,15 @@
 {#if expanded}
   <ul>
     {#each level.children as child}
-      <li>
-        {#if child.children}
+      {#if child.children}
+        <li>
           <svelte:self level={child} />
-        {:else}
+        </li>
+      {:else if child.name[0] !== "."}
+        <li>
           <File file={child} />
-        {/if}
-      </li>
+        </li>
+      {/if}
     {/each}
   </ul>
 {/if}

@@ -1,6 +1,6 @@
 <script lang="ts">
   import { storedFile } from "../media/stores";
-  import type { Level } from "./stores";
+  import type { Level } from "../../types";
 
   export let file: Omit<Level, "children">;
 

@@ -1,9 +1,9 @@
 <script lang="ts">
-  import { storedFile } from "./stores";
+  import { filePath } from "./stores";
   import SvelteMarkdown from "svelte-markdown";
 
   const file = (async () => {
-    const response = await fetch("http://localhost:3000/" + $storedFile.path);
+    const response = await fetch($filePath);
     return response.text();
   })();
 </script>

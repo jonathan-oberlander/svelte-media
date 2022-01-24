@@ -1,11 +1,9 @@
 <script lang="ts">
-  import { storedFile } from "./stores";
-
-  const baseUrl = "http://localhost:3000/";
+  import { storedFile, filePath } from "./stores";
 </script>
 
 <img
-  src={baseUrl + $storedFile.path}
+  src={$filePath}
   alt={$storedFile.name}
   class="responsive"
 />
