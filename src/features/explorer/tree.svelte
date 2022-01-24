@@ -1,16 +1,28 @@
 <script lang="ts">
-  import Folder from "./folder.svelte";
-  import { treeStore } from "./stores";
+  import Directory from "./directory.svelte";
+  import type { Level } from "./stores";
+
+  const fetchFiles = (async (): Promise<Level> => {
+    const response = await fetch("http://localhost:3000/directories");
+    return await response.json();
+  })();
 </script>
 
 <div class="container">
-  <Folder name="Home" files={$treeStore} expanded />
+  {#await fetchFiles}
+    <p>...waiting</p>
+  {:then level}
+    <Directory {level} />
+  {:catch error}
+    <p>An error occurred!</p>
+  {/await}
 </div>
 
 <style>
   .container {
-    border-right: 1px solid black;
-    width: 15em;
+    /* border-right: 1px solid black;
+    width: 15em; */
+    border: 1px solid black;
     height: 15em;
     overflow: auto;
   }

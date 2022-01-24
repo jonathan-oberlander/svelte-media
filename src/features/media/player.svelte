@@ -1,18 +1,35 @@
 <script lang="ts">
-  import Blue from "./blue.svelte";
-  import Green from "./green.svelte";
-  import Red from "./red.svelte";
-  import { fileStore, store } from "./stores";
+  import Image from "./image.svelte";
+  import Md from "./md.svelte";
+  import PDF from "./pdf.svelte";
+  import { storedFile } from "./stores";
 
-  const options = { gif: Blue, md: Green, pdf: Red };
+  const component = (type: string) => {
+    switch (type) {
+      case "gif":
+      case "jpeg":
+      case "png":
+        return Image;
+      case "md":
+        return Md;
+      case "pdf":
+        return PDF;
+      default:
+        return undefined;
+    }
+  };
 
-  $: type = $store.name.slice($store.name.lastIndexOf(".") + 1);
-  $: file = Object.values($fileStore).find((o) => o.name === $store.name);
+  $: type = $storedFile?.name.slice($storedFile?.name.lastIndexOf(".") + 1);
 </script>
 
-<div>
-  <pre>
-    {JSON.stringify(file, null, 3)}
-  </pre>
-  <svelte:component this={options[type]} />
+<div class="container">
+  <svelte:component this={component(type)} />
 </div>
+
+<style>
+  .container {
+    border: 1px solid black;
+    padding: 1em;
+    margin-top: 1em;
+  }
+</style>

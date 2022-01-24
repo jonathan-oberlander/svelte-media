@@ -1,15 +1,17 @@
 <script lang="ts">
-  import { store } from "../media/stores";
+  import { storedFile } from "../media/stores";
+  import type { Level } from "./stores";
 
-  export let name;
-  $: type = name.slice(name.lastIndexOf(".") + 1);
+  export let file: Omit<Level, "children">;
+
+  $: type = file.name.slice(file.name.lastIndexOf(".") + 1);
 </script>
 
 <span
   style="background-image: url(/icons/{type}.png)"
-  on:click={() => ($store.name = name)}
+  on:click={() => ($storedFile = file)}
 >
-  {name}
+  {file.name}
 </span>
 
 <style>
@@ -18,5 +20,9 @@
     background: 0 0.1em no-repeat;
     background-size: 1em 1em;
     cursor: pointer;
+  }
+
+  span:hover {
+    font-style: oblique;
   }
 </style>

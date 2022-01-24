@@ -1,7 +1,4 @@
 import { writable } from "svelte/store";
+import type { Level } from "../explorer/stores";
 
-export const store = writable({
-  name: "something.gif",
-});
-
-export const fileStore = writable({} as FileList);
+export const storedFile = writable<Omit<Level, "children"> | null>(null);

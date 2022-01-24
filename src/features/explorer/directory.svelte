@@ -1,25 +1,25 @@
 <script lang="ts">
   import File from "./file.svelte";
+  import type { Level } from "./stores";
 
   export let expanded = false;
-  export let name;
-  export let files;
+  export let level: Level;
 
   function toggle() {
     expanded = !expanded;
   }
 </script>
 
-<span class:expanded on:click={toggle}>{name}</span>
+<span class:expanded on:click={toggle}>{level.name}</span>
 
 {#if expanded}
   <ul>
-    {#each files as file}
+    {#each level.children as child}
       <li>
-        {#if file.files.length > 0}
-          <svelte:self {...file} />
+        {#if child.children}
+          <svelte:self level={child} />
         {:else}
-          <File name={file.name} />
+          <File file={child} />
         {/if}
       </li>
     {/each}
@@ -31,8 +31,12 @@
     padding: 0 0 0 1.5em;
     background: url(/icons/folder.png) 0 0.1em no-repeat;
     background-size: 1em 1em;
-    /* font-weight: bold; */
     cursor: pointer;
+  }
+
+  span:hover {
+    font-style: oblique;
+    /* font-weight: bold; */
   }
 
   .expanded {
