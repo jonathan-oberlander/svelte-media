@@ -28,8 +28,7 @@
 
 <style>
   .container {
-    border: 1px solid black;
     padding: 1em;
-    margin-top: 1em;
+    max-width: 80%;
   }
 </style>

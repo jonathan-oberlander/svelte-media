@@ -20,10 +20,9 @@
 
 <style>
   .container {
-    /* border-right: 1px solid black;
-    width: 15em; */
-    border: 1px solid black;
-    height: 15em;
+    border-right: 1px solid black;
+    width: 15em;
+    /* height: 15em; */
     overflow: auto;
   }
 </style>

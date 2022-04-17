@@ -10,6 +10,7 @@
 
 <style>
   main {
+    display: flex;
     padding: 1em;
     max-width: 240px;
   }
