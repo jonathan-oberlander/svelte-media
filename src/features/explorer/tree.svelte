@@ -2,14 +2,14 @@
   import Directory from "./directory.svelte";
   import type { Level } from "../../types";
 
-  const fetchFiles = (async (): Promise<Level> => {
+  const fetchFiles = async (): Promise<Level> => {
     const response = await fetch("http://localhost:3000/directories");
     return await response.json();
-  })();
+  };
 </script>
 
 <div class="container">
-  {#await fetchFiles}
+  {#await fetchFiles()}
     <p>...waiting</p>
   {:then level}
     <Directory {level} />

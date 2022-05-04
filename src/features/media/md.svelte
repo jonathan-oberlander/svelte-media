@@ -2,13 +2,13 @@
   import { filePath } from "./stores";
   import SvelteMarkdown from "svelte-markdown";
 
-  const file = (async () => {
+  const file = async () => {
     const response = await fetch($filePath);
     return response.text();
-  })();
+  };
 </script>
 
-{#await file then source}
+{#await file() then source}
   <SvelteMarkdown {source} />
 {/await}
 
