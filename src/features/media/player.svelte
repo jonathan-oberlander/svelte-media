@@ -30,5 +30,7 @@
   .container {
     padding: 1em;
     max-width: 80%;
+    margin-left: 15em;
+    display: block;
   }
 </style>

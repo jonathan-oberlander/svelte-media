@@ -11,10 +11,10 @@
 <style>
   main {
     display: flex;
+    flex-direction: column;
     padding: 1em;
     max-width: 240px;
   }
-
   @media (min-width: 640px) {
     main {
       max-width: none;
